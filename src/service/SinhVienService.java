@@ -108,26 +108,7 @@ public class SinhVienService {
 
     }
 
-    public List<SinhVien> filterByGender(int gender) {
-
-        try {
-            listSV = new ArrayList<>();
-            con = DBConnect.getConnection();
-            sql = "SELECT * FROM sinhvien WHERE gioitinh = ?";
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, gender);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                SinhVien sv = new SinhVien(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getInt(6));
-                
-                listSV.add(sv);
-            }
-            return listSV;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+    
     public List<SinhVien> sortByDiemFromDB() {
 
         try {
